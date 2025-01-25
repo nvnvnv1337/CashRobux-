@@ -1,4 +1,6 @@
-from time import process_time
+from dotenv import load_dotenv
+import os
+from aiogram import Bot, Dispatcher
 
 import telebot
 
