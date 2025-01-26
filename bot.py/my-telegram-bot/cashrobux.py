@@ -1,14 +1,11 @@
 from dotenv import load_dotenv
 import os
-from aiogram import Bot, Dispatcher
+from telebot import TeleBot
 
-import telebot
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
 
-user_data = {}
-
-TOKEN = "8190098817:AAF6jqh-AM4QHUbUBjg_vZExAXc8Swyyt20"
-
-bot = telebot.TeleBot(TOKEN)
+bot = TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -33,6 +30,5 @@ def process_money_input(message):
         bot.reply_to(message, f"{round(robux)} робуксов")
     except ValueError:
         bot.reply_to(message, "введи нормальное число")
-
 
 bot.polling(none_stop=True)
